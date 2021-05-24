@@ -1,0 +1,566 @@
+@charset "UTF-8";
+* {
+  position: relative;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+
+label {
+  cursor: pointer;
+}
+
+.daybox {
+  display: inline-block;
+  
+  max-width: 450px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.daybox:hover .bottom {
+  height: 90px;
+}
+
+.daybox:hover .dayweather {
+  opacity: 1;
+  top: 0px;
+}
+
+.temsvg {
+  width: 100%;
+  position: relative;
+  top: -300px;
+}
+
+.temsvg polyline {
+  stroke: #eaeade;
+  stroke-width: 1px;
+  fill: none;
+  opacity: 0;
+}
+
+.temsvg text {
+  fill: #eaeade;
+  transform: translateX(-10px) translateY(-12px);
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+.temsvg circle {
+  fill: #eaeade;
+  opacity: 0;
+}
+
+.top {
+  height: 300px;
+  overflow: hidden;
+}
+
+.top .sky {
+  width: 250%;
+  height: 250%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 100%;
+  background: linear-gradient(#7045a5, #ffaa00);
+  animation: daylight 15s infinite;
+}
+
+.top .sky .star {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 100%;
+}
+
+.top .sky .star1 {
+  width: 5px;
+  height: 5px;
+  box-shadow: 0px 0px 10px white;
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 255px;
+  left: 450px;
+}
+
+.top .sky .star2 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0px 0px 5px white;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 280px;
+  left: 590px;
+}
+
+.top .sky .star3 {
+  width: 8px;
+  height: 8px;
+  box-shadow: 0px 0px 10px white;
+  background-color: rgba(255, 255, 255, 0.7);
+  top: 220px;
+  left: 640px;
+}
+
+.top .sky .star4 {
+  width: 4px;
+  height: 4px;
+  box-shadow: 0px 0px 8px white;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 320px;
+  left: 340px;
+}
+
+.top .sky .star5 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0px 0px 10px white;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 220px;
+  left: 380px;
+}
+
+.top .sky .star6 {
+  width: 6px;
+  height: 6px;
+  box-shadow: 0px 0px 10px white;
+  background-color: rgba(255, 255, 255, 0.4);
+  top: 200px;
+  left: 540px;
+}
+
+.top .sky .star7 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0px 0px 10px white;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 340px;
+  left: 670px;
+}
+
+.top .cloud {
+  width: 80px;
+  height: 28px;
+  position: absolute;
+  left: 160px;
+  top: 70px;
+  border-radius: 20px;
+  animation: clouddrift 5s infinite;
+  background-color: #eaeade;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.top .cloud:before, .top .cloud:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: #eaeade;
+}
+
+.top .cloud:before {
+  left: 10px;
+  top: -22px;
+}
+
+.top .cloud:after {
+  left: 30px;
+  top: -15px;
+}
+
+@keyframes clouddrift {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.top .rain {
+  width: 2px;
+  height: 10px;
+  position: absolute;
+  left: 35px;
+  bottom: 15px;
+  animation: raindrop 1s infinite linear;
+  background-color: #eaeade;
+}
+
+.top .rain1 {
+  left: 60px;
+  bottom: 20px;
+  animation-delay: -0.4s;
+}
+
+.top .rain2 {
+  left: 20px;
+  bottom: 20px;
+  animation-delay: -0.7s;
+}
+
+@keyframes raindrop {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+}
+
+.top .text_loc {
+  color: #eaeade;
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  left: 30px;
+}
+
+.top .text_info {
+  color: #eaeade;
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+}
+
+.top .text_big {
+  font-weight: bold;
+  color:#4B0091;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+.top .text_small {
+
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: rgba(75, 0, 145, 0.8);
+}
+
+@keyframes daylight {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
+
+.top .planet1 {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 105%;
+  background: #EBC673;
+}
+
+.top .planet1 .groundp1 {
+  border-radius: 100%;
+  background: #EBC673;
+}
+
+.top .planet1 .ground1 {
+  width: 50px;
+  height: 50px;
+  left: 25px;
+}
+
+.top .planet1 .ground2 {
+  width: 80px;
+  height: 80px;
+  left: 105px;
+}
+
+.bottom {
+  height: 10px;
+  background-color: #eaeade;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition-duration: 1s;
+}
+
+.bottom .dayweather {
+  width: calc(100% / 7  - 5px);
+  display: inline-block;
+  text-align: center;
+  opacity: 0;
+  top: 20px;
+  transition: 0.5s;
+}
+
+.bottom .dayweather h3 {
+  top: 5px;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.bottom .dayweather svg {
+  width: 100%;
+  max-width: 40px;
+  height: 40px;
+}
+
+.bottom .dayweather svg .sun {
+  fill: #FFD633;
+  stroke: rgba(255, 214, 51, 0.5);
+  stroke-width: 20px;
+  stroke-dasharray: 5px;
+}
+
+.bottom .dayweather svg .rain {
+  stroke: #4DACFF;
+  stroke-width: 3px;
+  animation: raindrop 1s infinite linear;
+}
+
+.bottom .dayweather svg .cloud {
+  fill: #ccc;
+  animation: clouddrift 5s infinite;
+}
+
+.bottom .dayweather:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.bottom .dayweather:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.bottom .dayweather:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.bottom .dayweather:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.bottom .dayweather:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.bottom .dayweather:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.bottom .dayweather:nth-child(7) {
+  transition-delay: 0.7s;
+}
+
+.branch {
+  border: solid 1px #977132;
+  stroke: #977132;
+  stroke-width: 1px;
+}
+
+.leaf {
+  fill: #8DCA92;
+}
+
+.leaf2 {
+  fill: #89af90;
+}
+
+.leaf3 {
+  fill: #a1d1aa;
+}
+
+#planet1 .ground1 {
+  fill: #EBC673;
+}
+
+#planet1 .tree2 {
+  transform: rotate(-15deg);
+}
+
+#planet1 .tree3 {
+  transform: rotate(210deg);
+}
+
+#giraffe {
+  position: absolute;
+  top: -140px;
+  left: -30px;
+}
+
+#giraffe .body {
+  fill: #F3EE73;
+  stroke: #F3EE73;
+  border: solid 1px #F3EE73;
+}
+
+#giraffe .eye {
+  fill: white;
+}
+
+#giraffe .eyeblack {
+  fill: rgba(0, 0, 0, 0.6);
+}
+
+#giraffe .ossicones {
+  stroke: #F3EE73;
+  stroke-width: 2.5px;
+}
+
+#giraffe .osstop, #giraffe .spot {
+  fill: #624F3E;
+}
+
+#giraffe .leg {
+  fill: #F3EE73;
+}
+
+#giraffe .rr {
+  transform-origin: 45px 19px;
+  animation: rotate_legR 2s infinite;
+}
+
+#giraffe .rl {
+  transform-origin: 45px 19px;
+  animation: rotate_legR 2s infinite;
+}
+
+#giraffe .lr {
+  transform-origin: 12px 19px;
+  animation: rotate_legL 2s infinite;
+}
+
+#giraffe .ll {
+  transform-origin: 12px 19px;
+  animation: rotate_legL 2s infinite;
+}
+
+@keyframes rotate_legR {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-60deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes rotate_legL {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+.giraffe {
+  animation: clouddrift 2s infinite;
+}
+
+#planet2 {
+  position: absolute;
+  top: 0px;
+}
+
+#planet2 .ground2 {
+  fill: #D3AB67;
+}
+
+#planet2 .tree1 {
+  transform: rotate(-60deg);
+}
+
+#planet2 .tree2 {
+  transform: rotate(-75deg);
+}
+
+#planet2 .tree3 {
+  transform: rotate(75deg);
+}
+
+#planet2 .tree4 {
+  transform: rotate(90deg);
+}
+
+#planet2 .tree5 {
+  transform: rotate(160deg);
+}
+
+#planet3 {
+  position: absolute;
+  top: 0px;
+}
+
+#planet3 .ground3 {
+  fill: #B89866;
+}
+
+.page_title {
+  position: absolute;
+  font-family: 微軟正黑體;
+  color: rgba(234, 234, 222, 0.8);
+  font-weight: 200;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  top: 570px;
+  letter-spacing: 1px;
+}
+
+.title_content {
+  top: 20px;
+  font-size: 12px;
+  left: 20px;
+  margin-right: 40px;
+}
+
+.temsvg circle {
+  transition: 0.5s;
+}
+
+.temsvg polyline {
+  transition: 0.5s 0.1s;
+}
+
+.temsvg text {
+  transition: 0.5s 0.2s;
+}
+
+#switch_night {
+  display: none;
+}
+
+#switch_night:checked + .top .giraffe, #switch_night:checked + .top .star, #switch_night:checked + .top #planet2, #switch_night:checked + .top #planet3 {
+  opacity: 0.1;
+}
+
+#switch_night:checked + .top #planet1 {
+  opacity: 0.2;
+}
+
+#switch_night:checked + .top .cloud {
+  opacity: 0.5;
+}
+
+#switch_night:checked + .top .temsvg circle, #switch_night:checked + .top .temsvg text, #switch_night:checked + .top .temsvg polyline {
+  opacity: 1;
+}
