@@ -32,7 +32,8 @@ Dr.Farm
 2.farmJson.js  
   
 參考資料：  
-https://github.com/raghavrajmittal/yolo-object-detection  
+https://github.com/raghavrajmittal/yolo-object-detection 
+https://github.com/eslynunez/yolo-object-detection/blob/master/yolo.py
   
   
 訓練模型：  
